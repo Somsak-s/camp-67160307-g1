@@ -1,25 +1,92 @@
-<!--- file : resources/view/html101.blade.php -->
 <html lang="th">
 <head>
 <meta charset="UTF-8">
 <title>Workshop #HTML - FORM</title>
 
 <style>
-    body {
-        font-family: "Prompt", sans-serif;
-        background: #f5f5f5;
-        display: flex;
-        justify-content: center;
-        padding: 40px;
-    }
+   body {
+    font-family: "Prompt", sans-serif;
+    margin: 0;
+    padding: 40px;
+    font-size: 13px;
+    position: relative;
+    overflow-x: hidden;
+    background: linear-gradient(to bottom, rgba(220,240,255,0.6), rgba(255,255,255,0.8));
+    backdrop-filter: blur(15px) saturate(120%);
+    -webkit-backdrop-filter: blur(15px) saturate(120%);
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.3), transparent 60%);
+    filter: blur(120px);
+    pointer-events: none; /* ป้องกันแสงสะท้อนบังการคลิก */
+}
+.rain {
+    position: absolute;
+    width: 2px;
+    height: 60px;
+    background: rgba(104, 193, 249, 0.55);
+    filter: blur(1px);
+    animation: rainFall 0.7s linear infinite;
+    border-radius: 50px;
+    opacity: 0.9;
+}
 
-    .container {
-        background: #fff;
-        width: 480px;
-        padding: 30px 40px;
-        border-radius: 15px;
-        box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-    }
+@keyframes rainFall {
+    0% { transform: translateY(-100px); }
+    100% { transform: translateY(120vh); }
+}
+
+.bg-circle1 {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: #0781dfff;
+    filter: blur(120px);
+    border-radius: 50%;
+    top: -100px;
+    left: -80px;
+    z-index: -1;
+}
+
+/* วงกลมฟุ้งสีม่วงพาสเทล */
+.bg-circle2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: #0572c5ff;
+    filter: blur(150px);
+    border-radius: 50%;
+    bottom: -120px;
+    right: -100px;
+    z-index: -1;
+}
+
+  .container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.35); /* กระจกโปร่ง */
+    backdrop-filter: blur(25px) saturate(130%);
+    -webkit-backdrop-filter: blur(25px) saturate(130%);
+    width: 480px;
+    padding: 10px 40px;
+    border-radius: 18px;
+
+    /* เงากระจก */
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.18),
+        0 3px 6px rgba(0, 0, 0, 0.10),
+        inset 0 0 25px rgba(255, 255, 255, 0.25);
+
+    border: 1px solid rgba(255,255,255,0.5);
+    margin: 0 auto;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
 
     h1 {
         text-align: center;
@@ -45,10 +112,7 @@
         border: 1px solid #ccc;
         border-radius: 6px;
         font-size: 15px;
-    }
-
-    input[type=radio], input[type=checkbox] {
-        margin-right: 6px;
+        box-sizing: border-box;
     }
 
     textarea {
@@ -57,12 +121,12 @@
 
     .btn-group {
         display: flex;
-        justify-content: space-between;
+        gap: 15px;
         margin-top: 25px;
     }
 
     button {
-        width: 48%;
+        flex: 1;
         padding: 10px;
         font-size: 16px;
         border-radius: 8px;
@@ -87,11 +151,25 @@
 
 </head>
 <body>
+    <script>
+for (let i = 0; i < 40; i++) {
+    let drop = document.createElement("div");
+    drop.className = "rain";
+    drop.style.left = Math.random() * 100 + "vw";
+    drop.style.animationDelay = Math.random() * 2 + "s";
+    drop.style.opacity = 0.3 + Math.random() * 0.7;
+    drop.style.height = 40 + Math.random() * 50 + "px";
+    document.body.appendChild(drop);
+}
+</script>
+<div class="bg-circle1"></div>
+<div class="bg-circle2"></div>
 
 <div class="container">
     <h1>Workshop #HTML - FORM</h1>
 
     <form>
+
         <label>ชื่อ</label>
         <input type="text">
 
@@ -134,7 +212,9 @@
             <button type="reset" class="reset-btn">Reset</button>
             <button type="submit" class="submit-btn">Submit</button>
         </div>
+
     </form>
+
 </div>
 
 </body>
