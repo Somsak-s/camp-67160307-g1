@@ -26,7 +26,7 @@
                 <label for="lname">นามสกุล</label>
             </div>
             <div class="col">
-                <input id="lname" class="form-control" placeholder="นามสกุล">
+                <input id="lname" class="form-control">
               <div class="valid-feedback">
                     ถูกต้อง
                 </div>
