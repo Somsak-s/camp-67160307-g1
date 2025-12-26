@@ -5,7 +5,8 @@
 @section('content')
 
 <h1>Workshop #HTML - FORM</h1>
-    <form>
+    <form method="POST" action="/workshop">
+    @csrf
         <div class="row mt-3">
             <div class="col-sm-12 col-md-4">
                 <label for="fname">ชื่อ</label>
@@ -174,7 +175,7 @@
                      <div class="col">
                          <button type="reset" class="btn btn-light" value="Reset" id="reset-button" >Reset</button>
                         </div> <div class="col d-flex justify-content-end">
-                            <button type="button" class="btn btn-success" onclick="clickme()">Submit</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
         </div>
     </div>
 </div>
