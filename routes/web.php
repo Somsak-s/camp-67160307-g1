@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorkshopController;
+use App\Http\Controllers\PokedexController;
 
 Route::get('/', function () {
     return view('html101');
@@ -16,5 +17,6 @@ Route::get('/calculate', [App\Http\Controllers\MyController::class, 'info']);
 Route::post('/calculate', [App\Http\Controllers\MyController::class, 'calculate']);
 Route::get('/workshop', [WorkshopController::class, 'index']);
 Route::post('/workshop', [WorkshopController::class, 'store']);
+Route::resource('/pokedex', PokedexController::class);
 
 Route::resource('/flights', App\Http\Controllers\FlightController::class);
